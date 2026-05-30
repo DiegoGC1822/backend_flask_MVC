@@ -26,6 +26,9 @@ def create_app():
     app.register_blueprint(product_bp)
     app.register_blueprint(web_bp)
 
+    with app.app_context():
+        init_db()
+
     return app
 
 
@@ -33,5 +36,4 @@ app = create_app()
 
 
 if __name__ == '__main__':
-    init_db()
     app.run(debug=True, host='0.0.0.0', port=5000)
